@@ -46,38 +46,51 @@ var determineWinner = function () {
 
 var determineWinner2 = function () {
   determineWinner();
-  while (botsWins < 3 && playersWins < 3) {
+  alert('current tally: \nbot: ' + botsWins + '\nyou: ' + playersWins);
+  while (botsWins < 2 && playersWins < 2) {
    var answer = playersAnswer();
   console.log(botsAnswer());
   if (botResult === 'bot chooses scissors' && answer === "paper") {
-    alert('bot chose scissors, bot wins');
-    botsWins += 1;} else if (botResult === 'bot chooses paper' && answer === "rock") {
-    alert('bot chose paper, bot wins');
-    botsWins += 1;} else if (botResult === 'bot chooses rock' && answer === "scissor") {
-    alert('bot chose rock, bot wins');
-    botsWins += 1;} else if (answer === "scissor" && botResult === 'bot chooses paper') {
-    alert('bot chose paper, you win');
-    playersWins += 1;} else if (answer === "paper" && botResult === "bot chooses rock") {  
-    alert('bot chose rock, you win');
-    playersWins += 1;} else if (answer === "rock" && botResult === 'bot chooses scissors') {
-    alert('bot chose scissors, you win');
-    playersWins += 1;} else if (answer === "rock" && botResult === "bot chooses rock" || answer === "scissor" && botResult === "bot chooses scissors" || answer === "paper" && botResult === "bot chooses paper") {
-    alert("its a draw")} else {alert('not a valid answer, maybe check your spelling')};
+    botsWins += 1;
+    alert('bot chose scissors, bot wins. current tally: \nbot: ' + botsWins + '\nyou: ' + playersWins);
+    } else if (botResult === 'bot chooses paper' && answer === "rock") {
+    botsWins += 1;
+    alert('bot chose paper, bot wins. current tally: \nbot: ' + botsWins + '\nyou: ' + playersWins);} else if (botResult === 'bot chooses rock' && answer === "scissor") {
+    botsWins += 1;
+    alert('bot chose rock, bot wins. current tally: \nbot: ' + botsWins + '\nyou: ' + playersWins);
+    } else if (answer === "scissor" && botResult === 'bot chooses paper') { 
+    playersWins += 1;
+    alert('bot chose paper, you win. current tally: \nbot: ' + botsWins + '\nyou: ' + playersWins);
+    } else if (answer === "paper" && botResult === "bot chooses rock") { 
+    playersWins += 1;
+    alert('bot chose rock, you win. current tally: \nbot: ' + botsWins +'\nyou: ' + playersWins);
+    } else if (answer === "rock" && botResult === 'bot chooses scissors') {
+    playersWins += 1;
+    alert('bot chose scissors, you win. current tally: \nbot: ' + botsWins + '\nyou: ' + playersWins);
+     } else if (answer === "rock" && botResult === "bot chooses rock" || answer === "scissor" && botResult === "bot chooses scissors" || answer === "paper" && botResult === "bot chooses paper") {
+     alert('its a draw. current tally: \nbot: ' + botsWins + '\nyou: ' + playersWins);;} else {alert('not a valid answer, maybe check your spelling')};
    
-  }if (botsWins === 3) {
-     alert('bot won 3 times. better luck next time');
-     } else if (playersWins === 3) {
-      alert('3 wins. congratultions!')
+  }if (botsWins === 2) {
+     alert('bot won 2 times. better luck next time \nbot: ' + botsWins + '\nyou: ' + playersWins);;
+     } else if (playersWins === 2) {
+      alert('2 wins. congratulations!\nbot: ' + botsWins + '\nyou: ' + playersWins);
   };
 };
   
 var game = function () {
   if (welcome === '1') {
   determineWinner();
-  } else if (welcome === '2') {  
+  } else if (welcome === '2') { 
   determineWinner2();
 } else {
   alert('sorry, not a valid answer')}
 };
 
 game();
+var response = confirm('Do you want to play again?');
+if (response) {
+ var welcome = prompt('Welcome to the most awesome game of rock, paper scissor!\nchoose between 1. single round mode. or 2. best out of 3.', 'type "1" or "2"');
+  game();
+} else {
+  alert('sheesh, ok be like that, im not offended');
+};
