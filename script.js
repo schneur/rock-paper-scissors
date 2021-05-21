@@ -87,10 +87,16 @@ var game = function () {
 };
 
 game();
-var response = confirm('Do you want to play again?');
+var play = function () {
+  var response = confirm('Do you want to play again?');
 if (response) {
- var welcome = prompt('Welcome to the most awesome game of rock, paper scissor!\nchoose between 1. single round mode. or 2. best out of 3.', 'type "1" or "2"');
+  welcome = prompt('Welcome to the most awesome game of rock, paper scissor!\nchoose between 1. single round mode. or 2. best out of 3.', 'type "1" or "2"');
+  botsWins = 0;
+  playersWins = 0;
   game();
+  play();
 } else {
   alert('sheesh, ok be like that, im not offended');
 };
+};
+play();
